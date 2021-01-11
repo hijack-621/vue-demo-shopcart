@@ -14,6 +14,15 @@ module.exports = {
     devServer:{
         port:3001,
         open:true,
+        // proxy:{
+        //     ["/img-api"]:{
+        //     target:'http://image.zhangxinxu.com/image/study/s/s256/mm14.jpg',
+        //       changeOrigin:true,
+        //         pathRewrite: {
+        //             ['^' + "/img-ap"]: ''
+        //         }
+        //     }
+        // }
     },
     plugins:[
         exhtmlplugin,
