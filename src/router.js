@@ -6,7 +6,7 @@ import searchvue from './vue-component/search.vue'
 
 import newlist from './vue-component/subcomponent/newslist.vue'
 import newsinfo from  './vue-component/subcomponent/newsinfo.vue'
-
+import shareimg from './vue-component/subcomponent/shareimg.vue'
 
 let router = new vuerouter({
     routes:[
@@ -39,6 +39,11 @@ let router = new vuerouter({
             path:'/home/newsinfo/:id', //:id表示这个id是个参数 
             component:newsinfo 
          },
+         {
+            path:'/home/shareimg', //:id表示这个id是个参数 
+            component:shareimg 
+         },
+
 
     ],
     linkActiveClass:'mui-active'
