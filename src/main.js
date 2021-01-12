@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import app from './app.vue'
-import { Header ,Swipe, SwipeItem } from 'mint-ui'; //使用 mint-ui的hader组件
+import { Header ,Swipe, SwipeItem, Button } from 'mint-ui'; //使用 mint-ui的hader组件
 import 'mint-ui/lib/style.css'
 import '../lib/css/mui.min.css'//引入样式文件
 import '../lib/css/icons-extra.css'
@@ -21,6 +21,7 @@ Vue.use(VueResource)
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe); //将mint-ui组件注册到vue上
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Button.name, Button);
 
 let vm = new Vue({
     el:'#app',

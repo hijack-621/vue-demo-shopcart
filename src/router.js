@@ -4,6 +4,10 @@ import membervue from './vue-component/member.vue'
 import shopcartvue from './vue-component/shopcart.vue'
 import searchvue from './vue-component/search.vue'
 
+import newlist from './vue-component/subcomponent/newslist.vue'
+import newsinfo from  './vue-component/subcomponent/newsinfo.vue'
+
+
 let router = new vuerouter({
     routes:[
         {
@@ -13,7 +17,7 @@ let router = new vuerouter({
 
         {
            path:'/home', 
-           component:homevue 
+           component:homevue,
         },
         {
             path:'/member', 
@@ -26,6 +30,14 @@ let router = new vuerouter({
          {
             path:'/search', 
             component:searchvue 
+         },
+         {
+            path:'/home/newslist', 
+            component:newlist 
+         },
+         {
+            path:'/home/newsinfo/:id', //:id表示这个id是个参数 
+            component:newsinfo 
          },
 
     ],
