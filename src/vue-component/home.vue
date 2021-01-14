@@ -1,11 +1,7 @@
 <template>
   <div>
     <!-- mint-ui 轮播图组件 -->
-    <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="item in imglist" :key="item.url">
-        <img :src="item.img" alt="" />
-      </mt-swipe-item>
-    </mt-swipe>
+    <swipe :imglist="imglist" :isfull="true"></swipe>
 
     <!-- 功能区 -->
     <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -23,7 +19,7 @@
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-        <router-link to="#">
+        <router-link to="/home/bgoods">
           <span class="mui-icon mui-icon-chatbubble"></span>
           <div class="mui-media-body">商品购买</div>
           </router-link>
@@ -50,35 +46,32 @@
   </div>
 </template>
 <script>
+import swipe from './subcomponent/swipe.vue'
 export default {
+ 
   data() {
     return {
-      imglist: [
-        { img: "../lib/img/jl1.jpg", url: "../lib/img/jl1.jpg" },
-        { img: "../lib/img/jl2.jpg", url: "../lib/img/jl2.jpg" },
-        { img: "../lib/img/jl3.jpg", url: "../lib/img/jl3.jpg" },
-      ],
+      imglist: [],
+      isfull:true,
+      cateid:4,
     };
   },
-  created() {},
-  methods: {},
+  created() {
+     this.getimglist() 
+  },
+  methods: {
+    getimglist(){
+              this.$http.get('https://api.thecatapi.com/v1/images/search?limit=6&category_ids='+this.cateid)
+              .then(res=>{
+                  this.imglist = res.body;
+              })
+    },
+  },
+  components:{
+    swipe
+  }
 };
 </script>
 <style lang='scss' scoped>
-.mint-swipe {
-  height: 200px;
-  .mint-swipe-item:nth-child(1) {
-    background-color: red;
-  }
-  .mint-swipe-item:nth-child(2) {
-    background-color: green;
-  }
-  .mint-swipe-item:nth-child(3) {
-    background-color: blue;
-  }
-  img {
-    height: 100%;
-    width: 100%;
-  }
-}
+
 </style>

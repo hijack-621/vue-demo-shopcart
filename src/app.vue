@@ -25,7 +25,7 @@
 				<span class="mui-tab-label">会员</span>
 			</router-link>
 			<router-link class="mui-tab-item-u" to="/shopcart">
-				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">0</span></span>
+				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" id='badge_id'>0</span></span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
 			<router-link class="mui-tab-item-u" to="/search">
@@ -42,7 +42,12 @@
 <style lang="scss" scoped>
 .header-padding{
     padding-top: 40px;
-    overflow-x: hidden; //transform: translateX(100%); 设置这个向x轴移动的属性后，当触发动画时，document会出x轴滚定条，所以组件切换时候，header和底部nav导航会不固定
+    overflow-x: hidden;
+    padding-bottom: 50px;
+    //transform: translateX(100%); 设置这个向x轴移动的属性后，当触发动画时，document会出x轴滚定条，所以组件切换时候，header和底部nav导航会不固定
+   .mint-header{ //找到mt-header对应的类！！！
+       z-index:999;
+   }
 }
 .v-enter{ //这两组类写一样的样式，会出现切换时，消失和出现的方向是相反的，假如这样 《---进来，那么出去 ---》方向就是这样，体验不好
     opacity:0;
