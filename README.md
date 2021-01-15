@@ -101,4 +101,21 @@
 ## vue 中 watch 监听属性中 使用箭头函数无法获取到 data属性中的任何值！！！
 
 ## apache  开启 gzip功能  优化网页数据的请求！！！！
+    开启：mod_deflate  mod_headers mod_filter  三个module  并 在 httpd.conf 配置文件末尾 配上【
+    <IfModule mod_deflate.c>
+
+    DeflateCompressionLevel 8  
+
+    SetOutputFilter DEFLATE 
+
+    DeflateFilterNote Input instream
+
+    DeflateFilterNote Output outstream
+
+    DeflateFilterNote Ratio ratio 
+
+    AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml text/javascript
+
+    </IfModule>
+    】 
     
