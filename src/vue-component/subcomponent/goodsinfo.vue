@@ -18,7 +18,7 @@
             <div class="mui-card-header">这是商品的标题</div>
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">
-						<div>市场价:<del>￥2399</del> 限时价:<span class="tprice">￥2100</span></div>
+						<div>市场价:<del>￥2399</del> 限时价:<span class="tprice" ref='tprice'>￥2100</span></div>
                         <!-- @ 子向父传值，: 父向子传值！！ -->
                         <p class='px'><span>购买数量:</span><numbox @getcount="getnumsfromNumbox" class='wd' :stock="rstock" ></numbox></p>
                         <mt-button type='primary' size='small'>立即购买</mt-button>
@@ -90,6 +90,21 @@ export default {
         },
         addtocart(){
             this.ballflag = !this.ballflag
+            var num = '';
+            for(var i=0;i<3;i++)
+            {
+                num+=Math.floor(Math.random()*10);
+            }
+
+            var goodsinfo = {//将goods的唯一id，数量，价格，还有在购物车中是否被选择这个四个属性传入对象中，
+                id:this.cateid, 
+                count:this.count,
+                price:parseInt(num),
+                selected:true,
+            }
+
+            //调用 vuex store中 mutation 的 caddtocart方法 goodsinfo为传参
+            this.$store.commit('caddtocart',goodsinfo)
         },
         beforeEnter (el) { //此处接受的参数为原生的js dom对象，也就是transition包裹的dom元素对象
                 el.style.transform = "translate(0, 0)"

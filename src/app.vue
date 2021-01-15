@@ -1,7 +1,13 @@
 <template>
     <div class='header-padding'>
       <!-- 顶部header区域 -->
-      <mt-header fixed title="vue-demo"></mt-header>
+      <mt-header fixed title="vue-demo">
+          <!-- mint-ui 组件 -->
+          <span  slot="left" v-show="flag" @click="goback">
+                <mt-button icon="back">返回</mt-button>
+          </span>
+
+      </mt-header>
         <div>
             <transition >
                 <!-- 动画切换效果，需要将组件放在transition中 并设置两组类 -->
@@ -25,7 +31,7 @@
 				<span class="mui-tab-label">会员</span>
 			</router-link>
 			<router-link class="mui-tab-item-u" to="/shopcart">
-				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" id='badge_id'>0</span></span>
+				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge" id='badge_id'>{{ $store.getters.getCartTotal }}</span></span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
 			<router-link class="mui-tab-item-u" to="/search">
@@ -37,7 +43,30 @@
     </div>
 </template>
 <script>
-
+    export default {
+        date(){
+            return {
+                flag:false,
+            }
+        },
+        created() { //页面文档创建好就判断路由，不是home就显示back按钮，
+            this.flag = this.$route.path ==='/home' ? false : true
+        },
+        watch:{ //监听 路由的改变，如果变成home就隐藏back按钮
+           "$route.path": function (newval){
+               if(newval === '/home') {
+                   this.flag = false
+               }else {
+                   this.flag = true
+               }
+           }
+        },
+        methods:{
+            goback(){
+                this.$router.go(-1) //go -1 1 就表示后退和前进
+            }
+        }
+    }
 </script>
 <style lang="scss" scoped>
 .header-padding{
