@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --hot --host 172.27.153.1",
-    "bulid": "npx webpack"
+    "build": "npx webpack"
   },
   "keywords": [],
   "author": "",

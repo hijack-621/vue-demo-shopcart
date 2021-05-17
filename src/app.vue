@@ -78,12 +78,12 @@
        z-index:999;
    }
 }
-.v-enter{ //这两组类写一样的样式，会出现切换时，消失和出现的方向是相反的，假如这样 《---进来，那么出去 ---》方向就是这样，体验不好
+.v-enter{ //这两组类写一样的样式，会出现切换时，消失和出现的方向是相反的，假如这样 《---进来，那样出去 ---》方向就是这样，体验不好
     opacity:0;
     transform: translateX(100%);
 }
  .v-leave-to{ //吧离开的动画类和进来的时候分开写，并且transform 移动位置相反，就可以组件《--- 这方向进来，离开消失也是《---这个方向
-      opacity:0;
+    opacity:0;
     transform: translateX(-100%);
     position: absolute;
  }
